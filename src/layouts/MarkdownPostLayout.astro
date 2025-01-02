@@ -1,11 +1,53 @@
 ---
 const { frontmatter } = Astro.props;
+import { BLOG_NAME, DESCRIPTION } from "../consts"
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
-<Layout>
-    <Header />
-    <h1 class="text-4xl dark:text-white tracking-widest ">{frontmatter.title}</h1>
-    <Footer />
-</Layout>
+<!doctype html>
+<html lang="ja" class="h-full">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content=`${DESCRIPTION}`>
+		<title>{frontmatter.title} - {BLOG_NAME}</title>
+	</head>
+	<body class="h-full m-0 flex flex-col">
+        <Header />
+        <main class="w-full mx-auto max-w-[63rem]">
+            <!-- Blog Article -->
+<div class="px-4 py-8 lg:pt-10 sm:px-6 lg:px-8 mx-auto">
+        
+      <!-- Content -->
+      <div class="space-y-5 md:space-y-8">
+        <div class="space-y-3">
+          <h2 class="text-2xl font-bold md:text-3xl dark:text-white">{frontmatter.title}</h2>
+  
+  <slot />
+  
+        <div>
+          <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+            Plan
+          </a>
+          <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+            Web development
+          </a>
+          <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+            Free
+          </a>
+          <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+            Team
+          </a>
+        </div>
+      </div>
+      <!-- End Content -->
+    </div>
+    
+  <!-- End Blog Article -->
+        </main>
+        <Footer />
+	</body>
+</html>
