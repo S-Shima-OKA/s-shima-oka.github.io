@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# "progress.md"という名前のファイルを無視
+progress.md
