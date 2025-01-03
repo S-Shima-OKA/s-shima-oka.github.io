@@ -1,5 +1,7 @@
 ---
 import { BLOG_NAME, DESCRIPTION } from "../consts";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 const {title, desc} = Astro.props;
 const { pathname } = Astro.url;
 ---
@@ -14,7 +16,11 @@ const { pathname } = Astro.url;
 		<title>{pathname === '/' ? BLOG_NAME : `${title} - ${BLOG_NAME}`}</title>
 	</head>
 	<body class="h-full m-0 flex flex-col">
-		<slot />
+		<Header />
+			<main class="mx-auto max-w-[80rem]">
+				<slot />
+			</main>
+		<Footer />
 	</body>
 </html>
 <script is:inline src="/node_modules/preline/preline.js"></script>
