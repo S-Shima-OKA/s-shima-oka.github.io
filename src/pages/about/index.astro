@@ -1,7 +1,30 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageTitle from '../../components/PageTitle.astro';
+import Heading from '../../components/Heading.astro';
 ---
 <Layout>
-    <PageTitle title="About" lead="このブログについて" />
+    <section class="max-w-[64rem] mx-auto">
+        <PageTitle title="About" lead="このブログについて" />
+        <div class="p-lead-area py-6 md:text-center">
+            <p>このブログはフロントエンドについて日々勉強したことの学びや気付きをラフに書き留めておく事を目的に運用しております。</p>
+            <p>フレームワークは<a href="https://astro.build/" target="_blank" class="text-blue-900 hover:text-blue-800 decoration-2 hover:underline focus:outline-none focus:underline opacity-90">Astro🚀</a>、<a href="https://tailwindcss.com/" target="_blank" class="text-blue-900 hover:text-blue-800 decoration-2 hover:underline focus:outline-none focus:underline opacity-90">tailwindcss</a>、記事はMarkDown形式、ホスティングはGithubPagesで配信しています。</p>
+            <Heading text="著者 - Author" classes="mt-8 text-center" />
+            <p class="font-bold mt-4 text-lg text-center">Shun Shimabukuro</p>
+            <Heading text="仕事 - Job" classes="mt-8 text-center" />
+            <p class="font-bold mt-4 text-lg text-center">Web Creator</p>
+            <Heading text="出身と居住地 - Hometown and Location" classes="mt-8 text-center" />
+            <p class="font-bold mt-4 text-lg text-center">Okinawa (OKA)</p>
+        </div>
+    </section>
 </Layout>
+<style is:inline>
+    .p-lead-area{
+        p{
+            line-height: 1.5;
+        }
+        p + p{
+            margin-top: 0.5rem;
+        }
+    }
+</style>
