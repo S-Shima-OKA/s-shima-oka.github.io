@@ -1,12 +1,10 @@
 ---
 import { BLOG_NAME,DESCRIPTION } from '../consts';
 import Layout from '../layouts/Layout.astro';
+import PageTitle from '../components/PageTitle.astro';
 import BlogPost from '../components/BlogPost.astro';
 ---
 <Layout>
-	<div class="text-center mt-12">
-		<h1 class="text-4xl dark:text-white tracking-widest ">{BLOG_NAME}</h1>
-		<p class="mt-8">{DESCRIPTION}</p>
-	</div>
+	<PageTitle title={BLOG_NAME} lead={DESCRIPTION} />
 	<BlogPost />
 </Layout>
