@@ -1,0 +1,9 @@
+---
+const {title, lead} = Astro.props;
+---
+<div class="text-center">
+    <h1 class="text-4xl dark:text-white tracking-widest ">{title}</h1>
+    {
+        lead && <p class="mt-8">{lead}</p>
+    }
+</div>
