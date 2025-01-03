@@ -2,31 +2,36 @@
 const { frontmatter } = Astro.props;
 import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
+const tagArray = [...frontmatter.tags];
+const date = new Date(frontmatter.pubDate);
+// 年、月、日を取得
+const year = date.getFullYear();
+const month = String(date.getMonth() + 1).padStart(2, '0');  // 月は0から始まるため+1
+const day = String(date.getDate()).padStart(2, '0');
+const formattedPubDate = `${year}年${month}月${day}日`;
 ---
 <Layout title={frontmatter.title} desc={frontmatter.description}>
 <!-- Blog Article -->
 <div class="w-full max-w-[63rem] mx-auto">
     <!-- Content -->
-    <div class="space-y-5 md:space-y-8">
+    <PageTitle title={frontmatter.title} textPosition="left" spacing="normal"/>
+    <ul class="flex items-center gap-3 mt-4">
+        {
+            tagArray.map((tag) => {
+                return(
+                <li>
+                    <a class="block py-1.5 px-3 rounded-md text-sm md:text-normal font-medium bg-gray-800 text-white dark:bg-white dark:text-neutral-800" href={tag}>
+                        {tag}
+                    </a>
+                </li>
+                )
+            })
+        }
+    </ul>
+    <p class="mt-2">投稿日：{formattedPubDate}</p>
+    <div class="space-y-5 md:space-y-8 mt-16">
         <div class="space-y-3">
-            <PageTitle title={frontmatter.title} textPosition="left" spacing="normal"/>
-
             <slot />
-
-            <div>
-                <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                Plan
-                </a>
-                <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                Web development
-                </a>
-                <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                Free
-                </a>
-                <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-                Team
-                </a>
-            </div>
         </div>
         <!-- End Content -->
     </div>
