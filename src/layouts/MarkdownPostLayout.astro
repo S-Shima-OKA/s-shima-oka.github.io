@@ -5,37 +5,37 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 <Layout title={frontmatter.title} desc={frontmatter.description}>
-    <Header />
+<Header />
     <main class="w-full mx-auto max-w-[63rem]">
-        <!-- Blog Article -->
-<div class="px-4 py-8 lg:pt-10 sm:px-6 lg:px-8 mx-auto">
+    <!-- Blog Article -->
+    <div class="px-4 py-8 lg:pt-10 sm:px-6 lg:px-8 mx-auto">
 
-  <!-- Content -->
-  <div class="space-y-5 md:space-y-8">
-    <div class="space-y-3">
-      <h2 class="text-2xl font-bold md:text-3xl dark:text-white">{frontmatter.title}</h2>
+        <!-- Content -->
+        <div class="space-y-5 md:space-y-8">
+            <div class="space-y-3">
+                <h2 class="text-2xl font-bold md:text-3xl dark:text-white">{frontmatter.title}</h2>
 
-<slot />
+                <slot />
 
-    <div>
-      <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-        Plan
-      </a>
-      <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-        Web development
-      </a>
-      <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-        Free
-      </a>
-      <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
-        Team
-      </a>
+                <div>
+                    <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+                    Plan
+                    </a>
+                    <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+                    Web development
+                    </a>
+                    <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+                    Free
+                    </a>
+                    <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#">
+                    Team
+                    </a>
+                </div>
+        </div>
+        <!-- End Content -->
     </div>
-  </div>
-  <!-- End Content -->
-</div>
 
-<!-- End Blog Article -->
+    <!-- End Blog Article -->
     </main>
-    <Footer />
+<Footer />
 </Layout>
