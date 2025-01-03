@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageTitle from '../../components/PageTitle.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+export async function getStaticPaths() {
+    const allPosts = await Astro.glob('../posts/*.md');
+    const displayPosts = allPosts.filter((post) => !post.frontmatter.draft); //draft = 下書きじゃない記事を抽出。
+    const uniqueTags = [...new Set(displayPosts.map((post) => post.frontmatter.tags).flat())];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = displayPosts.filter((post) => post.frontmatter.tags.includes(tag));
+        const sortedPosts = filteredPosts.sort((a, b) => {
+        const aDate = new Date(a.frontmatter.pubDate);
+        const bDate = new Date(b.frontmatter.pubDate);
+            return bDate.getTime() - aDate.getTime();
+        });
+        return {
+        params: { tag },
+        props: { posts: sortedPosts },
+        };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+<Layout>
+    <PageTitle title="Tags" lead=`${tag}のタグが付いた記事` />
+    <!-- Card Blog -->
+<div class="pt-10 lg:pt-14 mx-auto">
+    <!-- Grid -->
+        <section class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
+            {
+                posts.map((post) => {
+                    const date = new Date(post.frontmatter.pubDate);
+                    // 年、月、日を取得
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0');  // 月は0から始まるため+1
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const formattedPubDate = `${year}年${month}月${day}日`;
+                    return (
+                        <ArticleCard 
+                        postTitle={post.frontmatter.title}
+                        postDate={formattedPubDate}
+                        postDesc={post.frontmatter.description}
+                        postUrl={post.url}
+                        postImage={
+                            post.frontmatter.heroImage === '' ? '/public/assets/dummy.jpg' : post.frontmatter.heroImage
+                        }
+                        />
+                    )
+                })
+            }
+        </section>
+    <!-- End Grid -->
+    </div>
+    <!-- End Card Blog -->
+</Layout>
