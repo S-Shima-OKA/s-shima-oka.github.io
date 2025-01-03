@@ -1,5 +1,7 @@
 ---
-import { BLOG_NAME, DESCRIPTION } from "../consts"
+import { BLOG_NAME, DESCRIPTION } from "../consts";
+const {title, desc} = Astro.props;
+const { pathname } = Astro.url;
 ---
 <!doctype html>
 <html lang="ja" class="h-full">
@@ -8,11 +10,11 @@ import { BLOG_NAME, DESCRIPTION } from "../consts"
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={DESCRIPTION}>
-		<title>{BLOG_NAME}</title>
+		<meta name="description" content=`${desc}${DESCRIPTION}`>
+		<title>{pathname === '/' ? BLOG_NAME : `${title} - ${BLOG_NAME}`}</title>
 	</head>
 	<body class="h-full m-0 flex flex-col">
 		<slot />
 	</body>
 </html>
-<script is:inline src="./node_modules/preline/preline.js"></script>
+<script is:inline src="/node_modules/preline/preline.js"></script>
