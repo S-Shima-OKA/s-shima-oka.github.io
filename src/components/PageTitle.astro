@@ -1,8 +1,8 @@
 ---
-const {title, lead} = Astro.props;
+const {title, lead, textPosition = 'center', spacing = 'widest'} = Astro.props;
 ---
-<div class="text-center">
-    <h1 class="text-4xl dark:text-white tracking-widest ">{title}</h1>
+<div class=`text-${textPosition}`>
+    <h1 class=`text-4xl font-bold dark:text-white tracking-${spacing}`>{title}</h1>
     {
         lead && <p class="mt-8">{lead}</p>
     }
