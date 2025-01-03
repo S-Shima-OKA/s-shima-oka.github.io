@@ -1,0 +1,15 @@
+---
+const {headingLv = 2, text, classes} = Astro.props;
+const currentLv = Math.min(Math.max(headingLv, 2), 6);
+const Tag = `h${currentLv}`;
+const textSizeMap = {
+  1: 'text-3xl',
+  2: 'text-3xl',
+  3: 'text-2xl',
+  4: 'text-xl',
+  5: 'text-lg',
+  6: 'text-base',
+};
+const textSize = textSizeMap[currentLv] || 'text-3xl';
+---
+<div class=`${textSize} font-bold dark:text-white ${classes}`><Tag>{text}</Tag></div>
