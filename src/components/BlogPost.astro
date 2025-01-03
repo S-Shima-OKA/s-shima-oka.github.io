@@ -2,13 +2,18 @@
 import ArticleCard from '../components/ArticleCard.astro';
 const allPosts = await Astro.glob('../pages/posts/*.md'); // 全ての記事を取得。
 const displayPosts = allPosts.filter((post) => !post.frontmatter.draft); //draft = 下書きじゃない記事を抽出。
+const sortedPosts = displayPosts.sort((a, b) => {
+  const aDate = new Date(a.frontmatter.pubDate);
+  const bDate = new Date(b.frontmatter.pubDate);
+  return bDate.getTime() - aDate.getTime();
+});
 ---
 <!-- Card Blog -->
 <div class="pt-10 lg:pt-14 mx-auto">
 <!-- Grid -->
     <section class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
         {
-            displayPosts.map((post) => {
+            sortedPosts.map((post) => {
                 const date = new Date(post.frontmatter.pubDate);
                 // 年、月、日を取得
                 const year = date.getFullYear();
