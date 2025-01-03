@@ -20,7 +20,7 @@ const formattedPubDate = `${year}年${month}月${day}日`;
             tagArray.map((tag) => {
                 return(
                 <li>
-                    <a class="block py-1.5 px-3 rounded-md text-sm md:text-normal font-medium bg-gray-800 text-white dark:bg-white dark:text-neutral-800" href={tag}>
+                    <a class="block py-1.5 px-3 rounded-md text-sm md:text-normal font-medium bg-gray-800 text-white dark:bg-white dark:text-neutral-800" href={`/tags/${tag}`}>
                         {tag}
                     </a>
                 </li>
