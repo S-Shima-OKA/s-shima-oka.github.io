@@ -25,7 +25,7 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 <Layout>
-    <PageTitle title={tag} lead=`「${tag}」の記事一覧` />
+    <PageTitle title={tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase()} lead=`「${tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase()}」の記事一覧` />
     <!-- Card Blog -->
 <div class="pt-10 lg:pt-14 mx-auto">
     <!-- Grid -->
@@ -45,7 +45,7 @@ const { posts } = Astro.props;
                         postDesc={post.frontmatter.description}
                         postUrl={post.url}
                         postImage={
-                            post.frontmatter.heroImage === '' ? '/public/assets/dummy.jpg' : post.frontmatter.heroImage
+                            post.frontmatter.heroImage === '' ? '/public/assets/img/general.jpg' : post.frontmatter.heroImage
                         }
                         />
                     )
