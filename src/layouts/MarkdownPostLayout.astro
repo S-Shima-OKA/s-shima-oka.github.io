@@ -21,7 +21,9 @@ const formattedPubDate = `${year}年${month}月${day}日`;
                 return(
                 <li>
                     <a class="block py-1.5 px-3 rounded-md text-sm md:text-normal font-medium bg-gray-800 text-white dark:bg-white dark:text-neutral-800" href={`/tags/${tag}`}>
-                        {tag}
+                        {
+                            tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase()
+                        }
                     </a>
                 </li>
                 )
