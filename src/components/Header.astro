@@ -1,5 +1,6 @@
 ---
 import { BLOG_NAME } from "../consts";
+import ThemeToggle from "./ThemeToggle.astro";
 const navLink = [
     {
         name: 'About',
@@ -62,6 +63,9 @@ const { pathname } = Astro.url;
                         )
                     })
                 }
+                <li>
+                  <ThemeToggle />
+                </li>
               </ul>
             </div>
 
