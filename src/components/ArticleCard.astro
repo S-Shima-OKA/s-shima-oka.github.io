@@ -2,6 +2,7 @@
 const {
     postTitle,
     postDate,
+    postFormatDate,
     postDesc,
     postUrl,
     postImage,
@@ -16,7 +17,7 @@ const {
         </div>
 
         <div class="grow">
-            <p class="dark:text-yellow-50 dark:group-hover:text-white">{postDate}</p>
+            <p class="dark:text-yellow-50 dark:group-hover:text-white"><time datetime={postDate}>{postFormatDate}</time></p>
             <h2 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-yellow-50 dark:group-hover:text-white">
             {postTitle}
             </h2>
