@@ -1,5 +1,8 @@
 ---
 import ArticleCard from '../components/ArticleCard.astro';
+import FlexBox from '../components/FlexBox.astro';
+import Button from '../components/Button.astro';
+import Pagination from './Pagination.astro';
 const allPosts = await Astro.glob('../pages/posts/*.md'); // 全ての記事を取得。
 const displayPosts = allPosts.filter((post) => !post.frontmatter.draft); //draft = 下書きじゃない記事を抽出。
 const sortedPosts = displayPosts.sort((a, b) => {
@@ -7,6 +10,7 @@ const sortedPosts = displayPosts.sort((a, b) => {
   const bDate = new Date(b.frontmatter.pubDate);
   return bDate.getTime() - aDate.getTime();
 });
+const { pathname } = Astro.url;
 ---
 <!-- Card Blog -->
 <div class="pt-10 lg:pt-14 mx-auto">
@@ -28,13 +32,16 @@ const sortedPosts = displayPosts.sort((a, b) => {
                     postDesc={post.frontmatter.description}
                     postUrl={post.url}
                     postImage={
-                        post.frontmatter.heroImage === '' ? '/public/assets/img/general.jpg' : post.frontmatter.heroImage
+                        post.frontmatter.heroImage === '' ? '../../assets/img/general.jpg' : post.frontmatter.heroImage
                     }
                     />
                 )
             })
         }
     </section>
-<!-- End Grid -->
+    <!-- End Grid -->
+    {pathname === '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24"><Button text="記事一覧" link="/article/" /></FlexBox>}
+    {pathname !== '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24"><Pagination /></FlexBox>}
+    
 </div>
 <!-- End Card Blog -->
