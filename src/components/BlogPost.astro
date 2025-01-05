@@ -23,7 +23,8 @@ const sortedPosts = displayPosts.sort((a, b) => {
                 return (
                     <ArticleCard 
                     postTitle={post.frontmatter.title}
-                    postDate={formattedPubDate}
+                    postDate={post.frontmatter.pubDate}
+                    postFormatDate={formattedPubDate}
                     postDesc={post.frontmatter.description}
                     postUrl={post.url}
                     postImage={
