@@ -30,7 +30,7 @@ const formattedPubDate = `${year}年${month}月${day}日`;
             })
         }
     </ul>
-    <p class="mt-2 dark:text-white">投稿日：{formattedPubDate}</p>
+    <p class="mt-2 dark:text-white"><time datetime={frontmatter.pubDate}>投稿日：{formattedPubDate}</time></p>
     <div class="space-y-5 md:space-y-8 mt-16 p-post-content">
         <div class="space-y-3">
             <slot />
