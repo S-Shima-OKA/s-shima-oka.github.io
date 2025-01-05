@@ -3,13 +3,8 @@ import { BLOG_NAME,DESCRIPTION } from '../consts';
 import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
 import BlogPost from '../components/BlogPost.astro';
-import FlexBox from '../components/FlexBox.astro';
-import Button from '../components/Button.astro';
 ---
 <Layout>
 	<PageTitle title={BLOG_NAME} lead={DESCRIPTION} />
 	<BlogPost />
-	<FlexBox vertical="center" classes="mt-12 md:mt-24">
-		<Button text="記事一覧" link="/article/" />
-	</FlexBox>
 </Layout>
