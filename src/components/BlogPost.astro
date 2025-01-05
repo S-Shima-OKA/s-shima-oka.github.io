@@ -40,8 +40,8 @@ const { pathname } = Astro.url;
         }
     </section>
     <!-- End Grid -->
-    {pathname === '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24"><Button text="記事一覧" link="/article/" /></FlexBox>}
-    {pathname !== '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24"><Pagination /></FlexBox>}
+    {pathname === '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Button text="記事一覧" link="/article/" /></FlexBox>}
+    {pathname !== '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Pagination /></FlexBox>}
     
 </div>
 <!-- End Card Blog -->
