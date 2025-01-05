@@ -1,6 +1,14 @@
 ---
-const {width = 40, text} = Astro.props;
+const {width = 40, text, link = null} = Astro.props;
+const classList = `w-full max-w-[${width}rem] py-3 px-4 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800`;
+
+
 ---
-<button type="button" class=`w-full max-w-[${width}rem] py-3 px-4 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800`>
-{text}
-</button>
+{
+    link ? (
+        <a href={link} class={classList}>{text}</a>
+        ) : (
+        <button type="button" class={classList}>{text}</button>
+    )
+}
+
