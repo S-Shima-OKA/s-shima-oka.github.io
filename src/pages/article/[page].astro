@@ -1,9 +1,10 @@
 ---
+import { itemSort } from '../../utils/utils';
 import Layout from '../../layouts/Layout.astro';
 import PageTitle from '../../components/PageTitle.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import FlexBox from '../../components/FlexBox.astro';
 import Pagination from '../../components/Pagination.astro';
-import { itemSort } from '../../utils/utils';
 
 export async function getStaticPaths({ paginate }) {
     const allPosts = await Astro.glob("./items/*.md");
@@ -13,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
 }
 const { page } = Astro.props;
 ---
-<Layout>
+<Layout title="Article" desc="これまでの記事一覧。">
     <PageTitle title="Article" lead="これまでの記事一覧" />
     <!-- Card Blog -->
     <div class="pt-10 lg:pt-14 mx-auto">
@@ -45,5 +46,7 @@ const { page } = Astro.props;
     <!-- End Grid -->
     </div>
     <!-- End Card Blog -->
-     <Pagination />
+     <FlexBox horizontal="center" classes="mt-8 md:mt-20">
+         <Pagination totalPages={page.total} prev={page.url.prev} next={page.url.next} last={page.lastPage}/>
+     </FlexBox>
 </Layout>
