@@ -6,17 +6,17 @@ import Pagination from '../../components/Pagination.astro';
 import { itemSort } from '../../utils/utils';
 
 export async function getStaticPaths({ paginate }) {
-    const allPosts = await Astro.glob("./posts/*.md");
+    const allPosts = await Astro.glob("./items/*.md");
     itemSort(allPosts);
 
-    return paginate(itemSort(allPosts), { pageSize: 4 }); // ページあたりの記事数を設定
+    return paginate(itemSort(allPosts), { pageSize: 6 }); // ページあたりの記事数を設定
 }
 const { page } = Astro.props;
 ---
 <Layout>
     <PageTitle title="Article" lead="これまでの記事一覧" />
     <!-- Card Blog -->
-<div class="pt-10 lg:pt-14 mx-auto">
+    <div class="pt-10 lg:pt-14 mx-auto">
     <!-- Grid -->
         <section class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
             {
