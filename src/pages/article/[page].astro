@@ -3,16 +3,13 @@ import Layout from '../../layouts/Layout.astro';
 import PageTitle from '../../components/PageTitle.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import Pagination from '../../components/Pagination.astro';
+import { itemSort } from '../../utils/utils';
 
 export async function getStaticPaths({ paginate }) {
     const allPosts = await Astro.glob("./posts/*.md");
-    const sortedPosts = allPosts.sort((a, b) => {
-    const aDate = new Date(a.frontmatter.pubDate);
-    const bDate = new Date(b.frontmatter.pubDate);
-        return bDate.getTime() - aDate.getTime();
-    });
+    itemSort(allPosts);
 
-    return paginate(sortedPosts, { pageSize: 4 }); // ページあたりの記事数を設定
+    return paginate(itemSort(allPosts), { pageSize: 4 }); // ページあたりの記事数を設定
 }
 const { page } = Astro.props;
 ---

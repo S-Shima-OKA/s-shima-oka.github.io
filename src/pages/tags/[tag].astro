@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PageTitle from '../../components/PageTitle.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import { itemSort } from '../../utils/utils';
 export async function getStaticPaths() {
     const allPosts = await Astro.glob('../posts/*.md');
     const displayPosts = allPosts.filter((post) => !post.frontmatter.draft); //draft = 下書きじゃない記事を抽出。
@@ -9,14 +10,10 @@ export async function getStaticPaths() {
 
     return uniqueTags.map((tag) => {
         const filteredPosts = displayPosts.filter((post) => post.frontmatter.tags.includes(tag));
-        const sortedPosts = filteredPosts.sort((a, b) => {
-        const aDate = new Date(a.frontmatter.pubDate);
-        const bDate = new Date(b.frontmatter.pubDate);
-            return bDate.getTime() - aDate.getTime();
-        });
+        itemSort(filteredPosts);
         return {
         params: { tag },
-        props: { posts: sortedPosts },
+        props: { posts: itemSort(filteredPosts) },
         };
   });
 }
