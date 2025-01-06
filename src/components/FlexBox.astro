@@ -1,6 +1,6 @@
 ---
 const {vertical = 'start', horizontal = 'start', classes = undefined} = Astro.props;
 ---
-<div class=`flex justify-${vertical} items-${horizontal} ${classes}`>
+<div class=`flex justify-${horizontal} items-${vertical} ${classes}`>
     <slot />
 </div>
