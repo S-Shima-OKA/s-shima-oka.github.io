@@ -8,9 +8,10 @@ import Pagination from '../../components/Pagination.astro';
 
 export async function getStaticPaths({ paginate }) {
     const allPosts = await Astro.glob("./items/*.md");
-    itemSort(allPosts);
+    const extendArray = Array(10).fill().map((_, i) => allPosts[i % allPosts.length]);
+    itemSort(extendArray);
 
-    return paginate(itemSort(allPosts), { pageSize: 6 }); // ページあたりの記事数を設定
+    return paginate(itemSort(extendArray), { pageSize: 6 }); // ページあたりの記事数を設定
 }
 const { page } = Astro.props;
 ---
@@ -47,6 +48,6 @@ const { page } = Astro.props;
     </div>
     <!-- End Card Blog -->
      <FlexBox horizontal="center" classes="mt-8 md:mt-20">
-         <Pagination totalPages={page.total} prev={page.url.prev} next={page.url.next} last={page.lastPage}/>
+         <Pagination pageTotal={page.total} pageUrlPrev={page.url.prev} pageNextUrl={page.url.next} currentPage={page.currentPage}/>
      </FlexBox>
 </Layout>
