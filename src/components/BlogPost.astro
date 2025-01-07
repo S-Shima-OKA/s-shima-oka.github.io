@@ -3,19 +3,16 @@ import ArticleCard from '../components/ArticleCard.astro';
 import FlexBox from '../components/FlexBox.astro';
 import Button from '../components/Button.astro';
 import Pagination from './Pagination.astro';
-import { itemSort } from '../utils/util';
-const allPosts = await Astro.glob('../pages/article/items/*.md'); // 全ての記事を取得。
-const displayPosts = allPosts.filter((post) => !post.frontmatter.draft); //draft = 下書きじゃない記事を抽出。
-itemSort(displayPosts);
 
 const { pathname } = Astro.url;
+const { sortFunc, isTotal, isPrev, isNext, isCurrentPage} = Astro.props;
 ---
 <!-- Card Blog -->
 <div class="pt-10 lg:pt-14 mx-auto">
 <!-- Grid -->
     <section class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
         {
-            itemSort(displayPosts).map((post) => {
+            sortFunc.map((post) => {
                 const date = new Date(post.frontmatter.pubDate);
                 // 年、月、日を取得
                 const year = date.getFullYear();
@@ -38,8 +35,14 @@ const { pathname } = Astro.url;
         }
     </section>
     <!-- End Grid -->
-    {pathname === '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Button text="記事一覧" link="/article/" /></FlexBox>}
-    {pathname !== '/' && <FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Pagination /></FlexBox>}
+    {pathname === '/' && (
+        <FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Button text="記事一覧" link="/article/1" /></FlexBox>)
+    }
+    {pathname !== '/' && (
+        <FlexBox horizontal="center" classes="mt-8 md:mt-20">
+            <Pagination pageTotal={isTotal} pageUrlPrev={isPrev} pageNextUrl={isNext} currentPage={isCurrentPage}/>
+        </FlexBox>)
+    }
     
 </div>
 <!-- End Card Blog -->
