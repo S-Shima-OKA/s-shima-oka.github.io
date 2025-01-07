@@ -1,6 +1,6 @@
 ---
 import { BLOG_NAME,DESCRIPTION } from '../consts';
-import { itemSort } from '../utils/utils';
+import { itemSort, releasedSort } from '../utils/util';
 import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
 import ArticleCard from '../components/ArticleCard.astro';
@@ -8,9 +8,8 @@ import FlexBox from '../components/FlexBox.astro';
 import Button from '../components/Button.astro';
 
 const allPosts = await Astro.glob('./article/items/*.md'); // 全ての記事を取得。
-const slicePosts = allPosts.slice(0);
-const undraftPosts = allPosts.filter((post) => !post.frontmatter.draft); //draft = 下書きじゃない記事を抽出。
-itemSort(undraftPosts);
+const releasedPosts = releasedSort(allPosts); //draft = 下書きじゃない記事を抽出。
+itemSort(releasedPosts);
 ---
 <Layout>
 	<PageTitle title={BLOG_NAME} lead={DESCRIPTION} />
@@ -19,7 +18,7 @@ itemSort(undraftPosts);
 	<!-- Grid -->
 	<section class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
 		{
-			itemSort(undraftPosts).slice(0,6).map((post) => {
+			itemSort(releasedPosts).slice(0,6).map((post) => {
 				const date = new Date(post.frontmatter.pubDate);
 				// 年、月、日を取得
 				const year = date.getFullYear();
