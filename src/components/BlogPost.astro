@@ -3,7 +3,7 @@ import ArticleCard from '../components/ArticleCard.astro';
 import FlexBox from '../components/FlexBox.astro';
 import Button from '../components/Button.astro';
 import Pagination from './Pagination.astro';
-import { itemSort } from '../utils/utils';
+import { itemSort } from '../utils/util';
 const allPosts = await Astro.glob('../pages/article/items/*.md'); // 全ての記事を取得。
 const displayPosts = allPosts.filter((post) => !post.frontmatter.draft); //draft = 下書きじゃない記事を抽出。
 itemSort(displayPosts);
