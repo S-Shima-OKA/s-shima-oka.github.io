@@ -2,52 +2,25 @@
 import { itemSort } from '../../utils/util';
 import Layout from '../../layouts/Layout.astro';
 import PageTitle from '../../components/PageTitle.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
-import FlexBox from '../../components/FlexBox.astro';
-import Pagination from '../../components/Pagination.astro';
+import BlogPost from '../../components/BlogPost.astro';
 
 export async function getStaticPaths({ paginate }) {
     const allPosts = await Astro.glob("./items/*.md");
     const extendArray = Array(10).fill().map((_, i) => allPosts[i % allPosts.length]);
-    itemSort(extendArray);
+    itemSort(allPosts);
 
-    return paginate(itemSort(extendArray), { pageSize: 6 }); // ページあたりの記事数を設定
+    return paginate(itemSort(allPosts), { pageSize: 6 }); // ページあたりの記事数を設定
 }
 const { page } = Astro.props;
 ---
 <Layout title="Article" desc="これまでの記事一覧。">
     <PageTitle title="Article" lead="これまでの記事一覧" />
     <!-- Card Blog -->
-    <div class="pt-10 lg:pt-14 mx-auto">
-    <!-- Grid -->
-        <section class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
-            {
-                page.data.map((post) => {
-                    const date = new Date(post.frontmatter.pubDate);
-                    // 年、月、日を取得
-                    const year = date.getFullYear();
-                    const month = String(date.getMonth() + 1).padStart(2, '0');  // 月は0から始まるため+1
-                    const day = String(date.getDate()).padStart(2, '0');
-                    const formattedPubDate = `${year}年${month}月${day}日`;
-                    return (
-                        <ArticleCard 
-                        postTitle={post.frontmatter.title}
-                        postDate={post.frontmatter.pubDate}
-                        postFormatDate={formattedPubDate}
-                        postDesc={post.frontmatter.description}
-                        postUrl={post.url}
-                        postImage={
-                            post.frontmatter.heroImage === '' ? '/public/assets/img/general.jpg' : post.frontmatter.heroImage
-                        }
-                        />
-                    )
-                })
-            }
-        </section>
-    <!-- End Grid -->
-    </div>
-    <!-- End Card Blog -->
-     <FlexBox horizontal="center" classes="mt-8 md:mt-20">
-         <Pagination pageTotal={page.total} pageUrlPrev={page.url.prev} pageNextUrl={page.url.next} currentPage={page.currentPage}/>
-     </FlexBox>
+    <BlogPost 
+        sortFunc={page.data} 
+        isTotal={page.total}
+        isPrev={page.url.prev}
+        isNext={page.url.next}
+        isCurrentPage={page.currentPage}
+    />
 </Layout>
