@@ -18,3 +18,10 @@ export const itemSort = (target) => target.sort((a, b) => {
  * @returns 
  */
 export const releasedSort = (target) => target.filter((post) => !post.frontmatter.draft);
+/**
+ * URLの末尾の数字を削除して/を返す。
+ * Paginationコンポーネントと併用。
+ * @param {*} url 
+ * @returns 
+ */
+export const urlReplace = (url) => url.replace(/\/\d+$/, '/');
