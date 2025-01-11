@@ -14,7 +14,7 @@ const { page } = Astro.props;
 const { pathname } = Astro.url;
 
 ---
-<Layout title="Article" desc="これまでの記事一覧。">
+<Layout title=`Article ${page.currentPage}/${page.lastPage}` desc="これまでの記事一覧。">
     <PageTitle title="Article" lead="これまでの記事一覧" />
     <!-- Card Blog -->
     <BlogPost 
