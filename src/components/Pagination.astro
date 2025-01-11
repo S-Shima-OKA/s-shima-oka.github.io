@@ -1,5 +1,5 @@
 ---
-const {pageUrlPrev, pageNextUrl, currentPage, pageTotal} = Astro.props;
+const {pageUrlPrev, pageNextUrl, pageNateUrl, currentPage, pageTotal} = Astro.props;
 const totalNum = pageTotal;
 const postPerPage = 6;
 const mathPages = Math.ceil(totalNum / postPerPage);
@@ -25,7 +25,7 @@ const pageNumbers = Array.from({ length: mathPages }, (_, i) => i + 1);
           num === currentPage ? (
             <li><a class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-transparent text-white bg-gray-800 py-3 px-4 text-normal rounded-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-transparent dark:text-gray-800 dark:bg-white" aria-current="page">{currentPage}</a></li>
           ) : (
-            <li><a class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-transparent text-gray-800 hover:bg-gray-100 py-3 px-4 text-normal rounded-lg focus:outline-2 focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" href={`/article/${num}`}>{num}</a></li>
+            <li><a class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-transparent text-gray-800 hover:bg-gray-100 py-3 px-4 text-normal rounded-lg focus:outline-2 focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" href={pageNateUrl + num}>{num}</a></li>
           )
           )
         })
