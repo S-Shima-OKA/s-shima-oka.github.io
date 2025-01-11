@@ -5,7 +5,7 @@ import Button from '../components/Button.astro';
 import Pagination from './Pagination.astro';
 
 const { pathname } = Astro.url;
-const { sortFunc, isTotal, isPrev, isNext, isCurrentPage} = Astro.props;
+const { sortFunc, isTotal, isPrev, isNext, isCurrentPage, isPageNate} = Astro.props;
 ---
 <!-- Card Blog -->
 <div class="pt-10 lg:pt-14 mx-auto">
@@ -27,7 +27,7 @@ const { sortFunc, isTotal, isPrev, isNext, isCurrentPage} = Astro.props;
                     postDesc={post.frontmatter.description}
                     postUrl={post.url}
                     postImage={
-                        post.frontmatter.heroImage === '' ? '../../assets/img/general.jpg' : post.frontmatter.heroImage
+                        post.frontmatter.heroImage === '' ? '/public/assets/img/general.jpg' : post.frontmatter.heroImage
                     }
                     />
                 )
@@ -40,7 +40,7 @@ const { sortFunc, isTotal, isPrev, isNext, isCurrentPage} = Astro.props;
     }
     {pathname !== '/' && (
         <FlexBox horizontal="center" classes="mt-8 md:mt-20">
-            <Pagination pageTotal={isTotal} pageUrlPrev={isPrev} pageNextUrl={isNext} currentPage={isCurrentPage}/>
+            <Pagination pageTotal={isTotal} pageUrlPrev={isPrev} pageNextUrl={isNext} currentPage={isCurrentPage} pageNateUrl={isPageNate} />
         </FlexBox>)
     }
     
