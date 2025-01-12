@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import PageTitle from '../components/PageTitle.astro';
 import BlogPost from '../components/BlogPost.astro';
 
-const allPosts = await Astro.glob('./article/_testItems/*.md'); // 全ての記事を取得。
+const allPosts = await Astro.glob('./article/items/*.md'); // 全ての記事を取得。
 const releasedPosts = releasedSort(allPosts); //draft = 下書きじゃない記事を抽出。
 itemSort(releasedPosts);
 ---
