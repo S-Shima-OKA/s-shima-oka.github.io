@@ -30,11 +30,11 @@ const formattedPubDate = `${year}年${month}月${day}日`;
             })
         }
     </ul>
-    <p class="mt-2 dark:text-white"><time datetime={frontmatter.pubDate}>投稿日：{formattedPubDate}</time></p>
-    <div class="space-y-5 md:space-y-8 mt-16 p-post-content">
-        <div class="space-y-3">
-            <slot />
-        </div>
+    <p class="mt-4 dark:text-white"><time datetime={frontmatter.pubDate}>投稿日：{formattedPubDate}</time></p>
+    <div class="space-y-3 md:space-y-8 pt-8 p-post-content">
+        <p class="text-lg dark:text-white">あああ</p>
+        <figure><img src={frontmatter.heroImage === '' ? '/assets/img/general.jpg' : frontmatter.heroImage} alt="" class="mx-auto"></figure>
+        <slot />
         <!-- End Content -->
     </div>
 </div>
@@ -42,8 +42,42 @@ const formattedPubDate = `${year}年${month}月${day}日`;
 </Layout>
 <style is:inline>
     .p-post-content {
+        h2,h3,h4,h5,h6{font-weight: 600;}
+        h2{
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            
+        }
+        h3{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+        h4{
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        h5{
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
         pre {
             padding: .25rem;
+        }
+        ul, ol{list-style-position: inside;}
+        ul{
+            list-style-type: disc;
+        }
+        ol{
+            list-style-type: decimal;
+        }
+        blockquote{
+            p{
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+            }
+        }
+        img{
+            margin: 0 auto;
         }
     }
     .dark .p-post-content * {
