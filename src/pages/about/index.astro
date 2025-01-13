@@ -1,9 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import PageTitle from '../../components/PageTitle.astro';
-import Heading from '../../components/Heading.astro';
+import { BLOG_NAME,DESCRIPTION } from '../../consts';
+import Layout from '@layouts/Layout.astro';
+import PageTitle from '@components/PageTitle.astro';
+import Heading from '@components/Heading.astro';
 ---
-<Layout>
+<Layout title=`About - このブログについて | ${BLOG_NAME}` desc=`このブログはフロントエンドについて日々勉強したことの学びや気付きをラフに書き留めておく事を目的に運用しております。`>
     <section class="max-w-[64rem] mx-auto">
         <PageTitle title="About" lead="このブログについて" />
         <div class="p-lead-area py-6 md:text-center">
