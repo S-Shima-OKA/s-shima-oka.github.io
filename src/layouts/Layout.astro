@@ -1,5 +1,7 @@
 ---
-import { BLOG_NAME, DESCRIPTION } from "../consts";
+// Supports weights 100-900
+import '@fontsource-variable/noto-sans-jp';
+import { BLOG_NAME } from "../consts";
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 const {title, desc} = Astro.props;
@@ -12,8 +14,8 @@ const { pathname } = Astro.url;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content=`${desc}${DESCRIPTION}`>
-		<title>{pathname === '/' ? BLOG_NAME : `${title} - ${BLOG_NAME}`}</title>
+		<meta name="description" content=`${desc}`>
+		<title>{pathname === '/' ? BLOG_NAME : `${title} | ${BLOG_NAME}`}</title>
 		<script is:inline>
 			// This code should be added to <head>.
 			// It's used to prevent page load glitches.
