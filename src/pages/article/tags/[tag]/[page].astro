@@ -2,7 +2,9 @@
 import { itemSort, releasedSort, urlReplace } from '@utils/util';
 import Layout from '@layouts/Layout.astro';
 import PageTitle from '@components/PageTitle.astro';
+import FlexBox from '@components/FlexBox.astro';
 import BlogPost from '@components/BlogPost.astro';
+import Pagination from '@components/Pagination.astro';
 
 export async function getStaticPaths({paginate}) {
   const allPosts = await Astro.glob('../../items/*.md');
@@ -33,4 +35,12 @@ const params = Astro.params;
     isNext={page.url.next}
     isCurrentPage={page.currentPage}
     isPageNate={pathname.replace(/\/\d+$/, '/')} />
+    <FlexBox horizontal="center" classes="mt-8 md:mt-20">
+      <Pagination 
+        pageUrlPrev={page.url.prev}
+        pageNextUrl={page.url.next}
+        currentPage={page.currentPage}
+        pageTotal={page.total}
+      />
+    </FlexBox>
 </Layout>
