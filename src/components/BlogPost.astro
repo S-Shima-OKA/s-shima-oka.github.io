@@ -1,11 +1,6 @@
 ---
 import ArticleCard from '@components/ArticleCard.astro';
-import FlexBox from '@components/FlexBox.astro';
-import Button from '@components/Button.astro';
-import Pagination from '@components/Pagination.astro';
-
-const { pathname } = Astro.url;
-const { sortFunc, isTotal, isPrev, isNext, isCurrentPage, isPageNate} = Astro.props;
+const { sortFunc } = Astro.props;
 ---
 <!-- Card Blog -->
 <div class="pt-10 lg:pt-14 mx-auto">
@@ -34,15 +29,6 @@ const { sortFunc, isTotal, isPrev, isNext, isCurrentPage, isPageNate} = Astro.pr
             })
         }
     </section>
-    <!-- End Grid -->
-    {pathname === '/' && (
-        <FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Button text="記事一覧" link="/article/1" /></FlexBox>)
-    }
-    {pathname !== '/' && (
-        <FlexBox horizontal="center" classes="mt-8 md:mt-20">
-            <Pagination pageTotal={isTotal} pageUrlPrev={isPrev} pageNextUrl={isNext} currentPage={isCurrentPage} pageNateUrl={isPageNate} />
-        </FlexBox>)
-    }
-    
+    <!-- End Grid -->    
 </div>
 <!-- End Card Blog -->
