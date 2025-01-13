@@ -1,8 +1,8 @@
 ---
-import { itemSort, releasedSort, urlReplace } from '../../../../utils/util';
-import Layout from '../../../../layouts/Layout.astro';
-import PageTitle from '../../../../components/PageTitle.astro';
-import BlogPost from '../../../../components/BlogPost.astro';
+import { itemSort, releasedSort, urlReplace } from '@utils/util';
+import Layout from '@layouts/Layout.astro';
+import PageTitle from '@components/PageTitle.astro';
+import BlogPost from '@components/BlogPost.astro';
 
 export async function getStaticPaths({paginate}) {
   const allPosts = await Astro.glob('../../items/*.md');
@@ -32,5 +32,5 @@ const params = Astro.params;
     isPrev={page.url.prev}
     isNext={page.url.next}
     isCurrentPage={page.currentPage}
-    isPageNate={urlReplace(pathname)} />
+    isPageNate={pathname.replace(/\/\d+$/, '/')} />
 </Layout>

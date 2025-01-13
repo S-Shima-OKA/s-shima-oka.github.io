@@ -1,9 +1,9 @@
 ---
 import { BLOG_NAME,DESCRIPTION } from '../consts';
-import { itemSort, releasedSort } from '../utils/util';
-import Layout from '../layouts/Layout.astro';
-import PageTitle from '../components/PageTitle.astro';
-import BlogPost from '../components/BlogPost.astro';
+import { itemSort, releasedSort } from '@utils/util';
+import Layout from '@layouts/Layout.astro';
+import PageTitle from '@components/PageTitle.astro';
+import BlogPost from '@components/BlogPost.astro';
 
 const allPosts = await Astro.glob('./article/items/*.md'); // 全ての記事を取得。
 const releasedPosts = releasedSort(allPosts); //draft = 下書きじゃない記事を抽出。

@@ -1,7 +1,7 @@
 ---
 const { frontmatter } = Astro.props;
-import Layout from '../layouts/Layout.astro';
-import PageTitle from '../components/PageTitle.astro';
+import Layout from '@layouts/Layout.astro';
+import PageTitle from '@components/PageTitle.astro';
 const tagArray = [...frontmatter.tags];
 const date = new Date(frontmatter.pubDate);
 // 年、月、日を取得
