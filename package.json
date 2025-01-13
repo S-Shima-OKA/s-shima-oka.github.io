@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
+    "@fontsource-variable/noto-sans-jp": "^5.1.1",
     "@preline/theme-switch": "^2.5.2",
     "astro": "^5.1.2",
     "preline": "^2.7.0",
