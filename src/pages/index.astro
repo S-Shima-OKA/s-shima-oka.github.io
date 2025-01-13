@@ -4,7 +4,8 @@ import { itemSort, releasedSort } from '@utils/util';
 import Layout from '@layouts/Layout.astro';
 import PageTitle from '@components/PageTitle.astro';
 import BlogPost from '@components/BlogPost.astro';
-
+import FlexBox from '@components/FlexBox.astro';
+import Button from '@components/Button.astro';
 const allPosts = await Astro.glob('./article/items/*.md'); // 全ての記事を取得。
 const releasedPosts = releasedSort(allPosts); //draft = 下書きじゃない記事を抽出。
 itemSort(releasedPosts);
@@ -12,4 +13,5 @@ itemSort(releasedPosts);
 <Layout>
 	<PageTitle title={BLOG_NAME} lead={DESCRIPTION} />
 	<BlogPost sortFunc={itemSort(releasedPosts).slice(0,6)} />
+	<FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Button text="記事一覧" link="/article/1" /></FlexBox>)
 </Layout>
