@@ -1,5 +1,5 @@
 ---
-import { BLOG_NAME,DESCRIPTION } from '../consts';
+import { BLOG_NAME, DESCRIPTION } from '../consts';
 import { itemSort, releasedSort } from '@utils/util';
 import Layout from '@layouts/Layout.astro';
 import PageTitle from '@components/PageTitle.astro';
@@ -10,8 +10,8 @@ const allPosts = await Astro.glob('./article/items/*.md'); // 全ての記事を
 const releasedPosts = releasedSort(allPosts); //draft = 下書きじゃない記事を抽出。
 itemSort(releasedPosts);
 ---
-<Layout>
+<Layout desc={DESCRIPTION}>
 	<PageTitle title={BLOG_NAME} lead={DESCRIPTION} />
 	<BlogPost sortFunc={itemSort(releasedPosts).slice(0,6)} />
-	<FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Button text="記事一覧" link="/article/1" /></FlexBox>)
+	<FlexBox vertical="center" classes="mt-12 md:mt-24 max-w-[40rem] mx-auto"><Button text="記事一覧" link="/article/1" /></FlexBox>
 </Layout>
