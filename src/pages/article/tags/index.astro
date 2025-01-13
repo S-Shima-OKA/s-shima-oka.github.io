@@ -4,7 +4,7 @@ import PageTitle from '@components/PageTitle.astro';
 const allPosts = await Astro.glob('../items/*.md');
 const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 ---
-<Layout>
+<Layout title="TagIndex" desc="タグ一覧">
 	<PageTitle title="TagIndex" lead=タグ一覧 />
 	<ul class="flex justify-center flex-wrap items-center gap-3 mt-8 md:max-w-[30rem] mx-auto">
 		{

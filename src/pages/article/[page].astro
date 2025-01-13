@@ -15,7 +15,7 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 
 ---
-<Layout title=`Article ${page.currentPage}/${page.lastPage}` desc="これまでの記事一覧。">
+<Layout title=`Article - ${page.currentPage}/${page.lastPage}` desc="これまでの記事一覧。">
     <PageTitle title="Article" lead="これまでの記事一覧" />
     <!-- Card Blog -->
     <BlogPost 
