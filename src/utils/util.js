@@ -31,3 +31,12 @@ export const dispPubDate = (postDate) => {
     const getPostDay = String(getPubDate.getDate()).padStart(2, '0');
     return `${getPostYear}年${getPostMonth}月${getPostDay}日`;
 }
+
+/**
+ * 配列の長さを増やすテスト関数
+ * 注 Astro.globで取得した記事配列に対して使用。
+ * @param {*} num 増やしたい数
+ * @param {*} targetArray Astro.globで取得した記事配列
+ * @returns 
+ */
+export const testExtendArray = (num, targetArray) => Array(num).fill().map((_, i) => targetArray[i % targetArray.length])

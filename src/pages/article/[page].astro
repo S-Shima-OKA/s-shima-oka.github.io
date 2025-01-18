@@ -1,5 +1,5 @@
 ---
-import { itemSort, } from '@utils/util';
+import { itemSort, testExtendArray } from '@utils/util';
 import Layout from '@layouts/Layout.astro';
 import PageTitle from '@components/PageTitle.astro';
 import BlogPost from '@components/BlogPost.astro';
@@ -7,10 +7,10 @@ import FlexBox from '@components/FlexBox.astro';
 import Pagination from '@components/Pagination.astro';
 export async function getStaticPaths({ paginate }) {
     const allPosts = await Astro.glob("./items/*.md");
-    const extendArray = Array(24).fill().map((_, i) => allPosts[i % allPosts.length]);
-    itemSort(extendArray);
+    const extendArray = testExtendArray(24, allPosts);
+    itemSort(allPosts);
 
-    return paginate(itemSort(extendArray), { pageSize: 6 }); // ページあたりの記事数を設定
+    return paginate(itemSort(allPosts), { pageSize: 6 }); // ページあたりの記事数を設定
 }
 const { page } = Astro.props;
 
