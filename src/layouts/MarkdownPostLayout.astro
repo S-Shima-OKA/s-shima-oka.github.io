@@ -28,7 +28,6 @@ const formattedPubDate = dispPubDate(frontmatter.pubDate);
     </ul>
     <p class="mt-4 dark:text-white"><time datetime={frontmatter.pubDate}>投稿日：{formattedPubDate}</time></p>
     <div class="space-y-3 md:space-y-8 pt-8 p-post-content">
-        <p class="text-lg dark:text-white">あああ</p>
         <figure><img src={frontmatter.heroImage === '' ? '/assets/img/general.jpg' : frontmatter.heroImage} alt="" class="mx-auto"></figure>
         <slot />
         <!-- End Content -->
