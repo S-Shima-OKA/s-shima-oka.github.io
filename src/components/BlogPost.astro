@@ -14,7 +14,7 @@ const { sortFunc } = Astro.props;
                     postDate={post.frontmatter.pubDate}
                     postFormatDate={post.frontmatter.pubDate}
                     postDesc={post.frontmatter.description}
-                    postUrl={post.url}
+                    postUrl={`/article/items/${post.frontmatter.slug}`}
                     postImage={post.frontmatter.heroImage}
                     />
                 )
