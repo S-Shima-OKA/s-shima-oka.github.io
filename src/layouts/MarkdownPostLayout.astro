@@ -27,7 +27,7 @@ const formattedPubDate = dispPubDate(frontmatter.pubDate);
         }
     </ul>
     <p class="mt-4 dark:text-white"><time datetime={frontmatter.pubDate}>投稿日：{formattedPubDate}</time></p>
-    <div class="space-y-3 md:space-y-8 pt-8 p-post-content">
+    <div class="space-y-12 md:space-y-16 pt-8 p-post-content">
         <figure><img src={frontmatter.heroImage === '' ? '/assets/img/general.jpg' : frontmatter.heroImage} alt="" class="mx-auto"></figure>
         <slot />
         <!-- End Content -->
@@ -38,21 +38,42 @@ const formattedPubDate = dispPubDate(frontmatter.pubDate);
 <style is:inline>
     .p-post-content {
         h2,h3,h4,h5,h6{font-weight: 600;}
+        @media (min-width: 768px) {
+            h2{
+                font-size: 1.875rem;
+                
+            }
+            h3{
+                font-size: 1.5rem;
+            }
+            h4{
+                font-size: 1.25rem;
+            }
+            h5{
+                font-size: 1.125rem;
+            }
+            h2 + *, h3 + *, h4 + *, h5 + *, h6 + *, * + pre{
+                margin-top: 0.5rem !important;
+            }
+            p + p, pre + p{
+                margin-top: 1.25rem !important;
+            }
+        }
         h2{
-            font-size: 1.875rem;
+            font-size: 1.75rem;
             line-height: 2.25rem;
             
         }
         h3{
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             line-height: 2rem;
         }
         h4{
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             line-height: 1.75rem;
         }
         h5{
-            font-size: 1.125rem;
+            font-size: 1em;
             line-height: 1.75rem;
         }
         pre {
@@ -74,9 +95,23 @@ const formattedPubDate = dispPubDate(frontmatter.pubDate);
         img{
             margin: 0 auto;
         }
+        a{
+            --tw-text-opacity: 1;
+            color: rgb(30 58 138 / var(--tw-text-opacity, 1));
+            font-weight: 600;
+            &:hover{
+                text-decoration-line: underline;
+                text-decoration-thickness: 2px;
+            }
+        }
     }
-    .dark .p-post-content * {
-        --tw-text-opacity: 1;
-        color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    .dark {
+        .p-post-content *:not(a) {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+        }
+        a{
+            color: rgb(255, 255, 0);
+        }
     }
 </style>
