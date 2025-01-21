@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://S-Shima-OKA.github.io/',
   outDir: "./docs",
-  base: '/nerd-out',
+  base: '/nerd-out', //ローカル確認時はコメントアウト
   output: 'static',
   publicDir: 'public',
   integrations: [tailwind()]
