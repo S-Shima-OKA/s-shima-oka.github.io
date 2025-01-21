@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # "progress.md"という名前のファイルを無視
 progress.md
+
+# 検証用のmdファイルフォルダ。
+_testitems
