@@ -87,9 +87,30 @@ const formattedPubDate = dispPubDate(frontmatter.pubDate);
             list-style-type: decimal;
         }
         blockquote{
+            margin-top: 1.5rem !important;
+            padding: 1rem 0 1rem 1.5rem !important ;
+            position: relative;
             p{
                 font-size: 1.25rem;
                 line-height: 1.75rem;
+            }
+            &::before{
+                content: '';
+                display: block;
+                width: 4px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0, .2);
+            }
+            + p {
+                margin-top: 0.5rem !important;
+                a {
+                    display: block;
+                    text-align: right;
+                    position: relative;
+                }
             }
         }
         img{
