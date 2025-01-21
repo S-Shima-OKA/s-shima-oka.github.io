@@ -5,9 +5,9 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://S-Shima-OKA.github.io/',
+  site: 'https://S-Shima-OKA.github.io/nerd-out',
   // outDir: "./docs",
-  base: '/nerd-out', //ローカル確認時はコメントアウト
+  // base: '/nerd-out', //ローカル確認時はコメントアウト
   output: 'static',
   publicDir: 'public',
   integrations: [tailwind()]
