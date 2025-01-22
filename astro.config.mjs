@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://nerd-out.github.io/',
   base: 'nerd-out', //ローカル確認時はコメントアウト
-  output: 'static',
-  publicDir: 'public',
+  // output: 'static',
+  // publicDir: 'public',
   integrations: [tailwind()]
 });
