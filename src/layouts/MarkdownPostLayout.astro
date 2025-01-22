@@ -16,7 +16,7 @@ const formattedPubDate = dispPubDate(frontmatter.pubDate);
             tagArray.map((tag) => {
                 return(
                 <li>
-                    <a class="block py-1.5 px-3 rounded-md text-sm md:text-normal font-medium bg-gray-800 text-white dark:bg-white dark:text-neutral-800" href={`../tags/${tag}/1`}>
+                    <a class="block py-1.5 px-3 rounded-md text-sm md:text-normal font-medium bg-gray-800 text-white dark:bg-white dark:text-neutral-800" href={`/article/tags/${tag}/1`}>
                         {
                             tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase()
                         }
